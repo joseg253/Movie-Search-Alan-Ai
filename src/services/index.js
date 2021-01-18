@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "924171499ba90abe211d9784a4e4be50";
+const API_KEY = "";
 const youtube_url = "https://www.youtube.com/watch?v=";
 let movie_results = [];
 let tv_results = [];
