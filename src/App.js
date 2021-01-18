@@ -7,8 +7,7 @@ import movieReel from "./images/movie_reel.jpg";
 import { fetchMovieURL, fetchTVURL } from "./services/index";
 import wordsToNumbers from "words-to-numbers";
 import "./title.css";
-const alanKey =
-  "94a6a14085b280b6d7526088a358cf202e956eca572e1d8b807a3e2338fdd0dc/prod";
+const alanKey ="";
 const App = () => {
   const [movieTitles, setMovieTitles] = useState([]);
   const classes = useStyles();
@@ -19,7 +18,7 @@ const App = () => {
   useEffect(() => {
     alanBtn({
       key:
-        "94a6a14085b280b6d7526088a358cf202e956eca572e1d8b807a3e2338fdd0dc/prod",
+        alanKey,
       onCommand: ({ command, results, number }) => {
         if (command === "newTitles") {
           setMovieTitles(results);
