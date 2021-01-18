@@ -57,14 +57,16 @@ const MovieCards = ({ movieTitles, activeTitle }) => {
                 className={classes.card}
                 style={{ backgroundColor: infoCard.color }}
               >
-                <Typography variant="h5">{infoCard.title}</Typography>
+                <Typography variant="h5" className={classes.card_text}>
+                  {infoCard.title}
+                </Typography>
                 {infoCard.info ? (
-                  <Typography variant="h6">
+                  <Typography variant="h6" className={classes.card_text}>
                     <br />
                     {infoCard.info}
                   </Typography>
                 ) : null}
-                <Typography varaint="h6">
+                <Typography varaint="h6" className={classes.saying_text}>
                   Try saying: <br />
                   <i>{infoCard.text}</i>
                 </Typography>
@@ -81,8 +83,8 @@ const MovieCards = ({ movieTitles, activeTitle }) => {
       <Grid
         className={classes.container}
         container
-        alignItems="stretch"
         spacing={3}
+        alignContent="stretch"
       >
         {movieTitles.map((movieTitle, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} style={{ display: "flex" }}>

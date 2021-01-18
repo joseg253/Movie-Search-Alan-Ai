@@ -31,3 +31,48 @@ export const fetchTVURL = async (id) => {
     return result;
   } catch (error) {}
 };
+
+export const fetchMovieDetails = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`,
+
+      {}
+    );
+    let arr = [];
+    const runtime = data["runtime"];
+    const genre = data["genres"];
+    const title = data["title"];
+    arr.push({ title: title });
+    arr.push({ run_time: runtime });
+    genre.map((genre) => {
+      arr.push({
+        name: genre.name,
+      });
+    });
+
+    return arr;
+  } catch (error) {}
+};
+export const fetchTvDetails = async (id) => {
+  try {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`,
+      {}
+    );
+
+    let arr = [];
+    const runtime = data["runtime"];
+    const genre = data["genres"];
+
+    arr.push({ runtime: runtime });
+
+    genre.map((genre) => {
+      arr.push({
+        name: genre.name,
+      });
+    });
+
+    return arr;
+  } catch (error) {}
+};

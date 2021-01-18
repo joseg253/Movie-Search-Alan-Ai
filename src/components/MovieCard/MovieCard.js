@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardActions,
@@ -12,6 +12,7 @@ import useStyles from "./styles.js";
 import classNames from "classnames";
 import ActorCard from "../ActorCard/ActorCards";
 import Snackbar from "@material-ui/core/Snackbar";
+import { fetchMovieDetails, fetchTvDetails } from "../../services/index.js";
 
 const MovieCard = ({
   movieTitle: {
@@ -29,6 +30,22 @@ const MovieCard = ({
   activeTitle,
 }) => {
   const classes = useStyles();
+  const [details, setDetails] = useState([]);
+  const [runTime, setRunTime] = useState("");
+  const [tvDetails, setTvDetails] = useState([]);
+
+  function timeConvert(n) {
+    var num = n;
+    var hours = num / 60;
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    if (rhours === 0) {
+      return rminutes + " min";
+    }
+
+    return rhours + "h " + rminutes + "min";
+  }
 
   if (known_for) {
     let arr = [];
@@ -56,7 +73,8 @@ const MovieCard = ({
   return (
     <>
       <Snackbar
-        open="true"
+        style={{ paddingTop: "4rem" }}
+        open={true}
         anchorOrigin={{ vertical: "top", horizontal: "left" }}
         message={
           title != null
@@ -80,20 +98,29 @@ const MovieCard = ({
             }
           />
           <div className={classes.details}>
-            <Typography variant="body2" color="textSecondary" component="h2">
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="h2"
+              className={classes.date_text}
+            >
               {release_date != null
-                ? new Date(release_date).toDateString()
+                ? release_date.split("-")[0]
                 : first_air_date != null
-                ? new Date(first_air_date).toDateString()
-                : "Date Unknown"}
+                ? first_air_date.split("-")[0]
+                : "Release Unknown"}
             </Typography>
           </div>
           <Typography className={classes.title} gutterBottom variant="h5">
             {title} {name}
           </Typography>
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {console.log(overview.length)}
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              className={classes.text}
+            >
               {overview != null && overview.length != 0 && overview != undefined
                 ? overview
                 : "There was no description found for the movie listed"}

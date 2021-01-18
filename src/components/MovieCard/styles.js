@@ -16,6 +16,7 @@ export default makeStyles({
   },
   title: {
     padding: "0 16px",
+    fontFamily: "Impact",
   },
   cardActions: {
     padding: "0 16px 8px 16px",
@@ -30,5 +31,11 @@ export default makeStyles({
   },
   activeCard: {
     borderBottom: "10px solid #22289a",
+  },
+  text: {
+    fontFamily: "sans-serf",
+  },
+  date_text: {
+    fontFamily: "Arial",
   },
 });

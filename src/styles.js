@@ -59,13 +59,14 @@ export default makeStyles((theme) => ({
     justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
+
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column-reverse",
       textAlign: "center",
     },
   },
   movieLogo: {
-    height: "35vmin",
+    height: "30vmin",
     borderRadius: "15%",
     padding: "0 5%",
     margin: "3% 0",
@@ -77,7 +78,7 @@ export default makeStyles((theme) => ({
     color: "#b48608",
     fontSize: "5rem",
     textAlign: "center",
-    textShadow: "0 0.2rem 5rem rgb(119, 115, 115)",
+    textShadow: "9px 7px 9px rgba(128, 0, 0, 1)",
     textTransform: "uppercase",
   },
 }));

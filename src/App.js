@@ -6,7 +6,7 @@ import { Typography } from "@material-ui/core";
 import movieReel from "./images/movie_reel.jpg";
 import { fetchMovieURL, fetchTVURL } from "./services/index";
 import wordsToNumbers from "words-to-numbers";
-
+import "./title.css";
 const alanKey =
   "94a6a14085b280b6d7526088a358cf202e956eca572e1d8b807a3e2338fdd0dc/prod";
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
   const classes = useStyles();
   const [activeTitle, setActiveTitle] = useState(-1);
   const [url, setURL] = useState("");
+  const target = window.document.getElementsByTagName("h1")[0];
 
   useEffect(() => {
     alanBtn({
@@ -31,12 +32,6 @@ const App = () => {
               ? wordsToNumbers(number, { fuzzy: true })
               : number;
 
-          console.log(
-            "the number is " +
-              parsedNumber +
-              "and its of type" +
-              typeof parsedNumber
-          );
           if (typeof parsedNumber == "string") {
             parsedNumber = parseInt(parsedNumber);
           }
@@ -94,9 +89,16 @@ const App = () => {
 
   return (
     <div>
-      <Typography variant="h1" className={classes.title}>
-        Movie Search with Alan AI
-      </Typography>
+      <div
+        style={{
+          width: "50%",
+          margin: "auto",
+          boxSizing: "border-box",
+          overflowWrap: "break-word",
+        }}
+      >
+        <h1>Movie Search</h1>
+      </div>
       <div className={classes.logoContainer}>
         <img
           src="https://wwwimage-secure.cbsstatic.com/base/files/seo/paramount-movies.jpg"

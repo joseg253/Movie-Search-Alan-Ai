@@ -22,4 +22,10 @@ export default makeStyles({
     flexDirection: "column",
     textAlign: "center",
   },
+  card_text: {
+    fontFamily: "Impact",
+  },
+  saying_text: {
+    fontFamily: "sans-serf",
+  },
 });
